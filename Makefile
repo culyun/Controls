@@ -27,15 +27,15 @@ endif
 LEADER = controls-leader
 
 all:
-	@echo "${RED}Not enough arguments. Call: ${ORANGE}make help${NC}"
+	@printf "${RED}Not enough arguments. Call: ${ORANGE}make help${NC}\n"
 
 .PHONY: leader
 leader: stm32f413
 
 stm32f413:
-	@echo "${YELLOW}Compiling for leader...${NC}"
+	@printf "${YELLOW}Compiling for leader...${NC}\n"
 	$(MAKE) -C BSP -C STM32F413 -j TARGET=$(LEADER) TEST=$(TEST_LEADER)
-	@echo "${BLUE}Compiled for leader! Jolly Good!${NC}"
+	@printf "${BLUE}Compiled for leader! Jolly Good!${NC}\n"
 
 flash:
 	$(MAKE) -C BSP -C STM32F413 flash
@@ -45,16 +45,16 @@ docs:
 	$(MAKE) -C Docs html
 
 help:
-	@echo "Format: ${ORANGE}make ${BLUE}<BSP type>${NC}${ORANGE}TEST=${PURPLE}<Test type>${NC}"
-	@echo "BSP types (required):"
-	@echo "	${BLUE}stm32f413/leader${NC}"
-	@echo ""
-	@echo "Test types (optional):"
-	@echo "	Set TEST only if you want to build a test."
-	@echo "	Otherwise, don't include TEST in the command."
-	@echo "	To build a test, replace ${PURPLE}<Test type>${NC} with the name of the file"
-	@echo "	excluding the file type (.c) e.g. say you want to test Voltage.c, call"
-	@echo "		${ORANGE}make ${BLUE}stm32f413 ${ORANGE}TEST=${PURPLE}Voltage${NC}"
+	@printf "Format: ${ORANGE}make ${BLUE}<BSP type>${NC}${ORANGE}TEST=${PURPLE}<Test type>${NC}\n"
+	@printf "BSP types (required):\n"
+	@printf "	${BLUE}stm32f413/leader${NC}\n"
+	@printf "\n"
+	@printf "Test types (optional):\n"
+	@printf "	Set TEST only if you want to build a test.\n"
+	@printf "	Otherwise, don't include TEST in the command.\n"
+	@printf "	To build a test, replace ${PURPLE}<Test type>${NC} with the name of the file\n"
+	@printf "	excluding the file type (.c) e.g. say you want to test Voltage.c, call\n"
+	@printf "		${ORANGE}make ${BLUE}stm32f413 ${ORANGE}TEST=${PURPLE}Voltage${NC}\n"
 
 
 clean:
